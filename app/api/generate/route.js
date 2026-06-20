@@ -36,7 +36,7 @@ Réponds UNIQUEMENT avec le code HTML complet, sans aucun texte avant ou après,
 
     const message = await anthropic.messages.create({
       model: "claude-sonnet-4-6",
-      max_tokens: 8000,
+      max_tokens: 12000,
       messages: [{ role: "user", content: prompt }],
     });
 
