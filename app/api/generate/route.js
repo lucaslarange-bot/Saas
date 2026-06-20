@@ -20,17 +20,23 @@ Description du business : ${description}
 Ton souhaité : ${ton}
 Palette de couleurs à utiliser (respecte-la strictement) : fond ${palette.colors[0]}, texte/contraste ${palette.colors[1]}, accent ${palette.colors[2]}
 
-Exigences :
-- Site complet : header avec navigation, hero percutant avec un vrai titre et sous-titre écrits pour CE business précis, section "à propos"/présentation, section services ou produits (3-4 items inventés de façon cohérente avec le secteur), section témoignages ou réassurance, section contact avec un formulaire (sans backend, juste visuel), footer.
-- Design soigné, typographie avec hiérarchie claire (Google Fonts), responsive mobile, pas de lorem ipsum, du vrai texte rédigé.
-- Pas de bibliothèque externe (pas de Tailwind CDN, pas de React) : du CSS pur dans une balise <style>, MAIS reste CONCIS sur le CSS (pas de commentaires, pas de règles redondantes) pour garantir que le document HTML complet (avec body et tout le contenu) soit généré sans être coupé.
-- Anime légèrement au scroll ou au hover si pertinent, sans exagérer, sans dépasser le nécessaire.
-- Priorité absolue : le document doit être COMPLET, avec balise </html> finale. Mieux vaut un CSS plus simple mais un site entier, qu'un CSS riche mais un fichier tronqué.
-- Réponds UNIQUEMENT avec le code HTML complet, sans aucun texte avant ou après, sans balises markdown \`\`\`.`;
+CONTRAINTE TECHNIQUE CRITIQUE : le CSS doit être MINIMALISTE. Maximum 100 lignes de CSS au total. Utilise des classes utilitaires réutilisables plutôt qu'une règle par élément (ex: une seule classe ".btn" réutilisée, pas ".btn-primary" + ".btn-secondary" + ".btn-cta" séparées). Pas de commentaires dans le CSS. Pas d'animations complexes au scroll (juste des transitions CSS simples au survol si besoin). N'utilise PAS de variables CSS avec des dizaines de couleurs : seulement 3 variables (bg, text, accent).
+
+Structure HTML requise (sois concis dans le HTML aussi, pas de sur-structuration) :
+1. Header avec logo + navigation simple
+2. Hero avec titre et sous-titre écrits spécifiquement pour ce business (pas de lorem ipsum)
+3. Section présentation/à propos courte
+4. Section services ou produits (3 items max, cohérents avec le secteur)
+5. Section contact avec formulaire simple (nom, email, message)
+6. Footer simple
+
+PRIORITÉ ABSOLUE : le document HTML doit être ENTIÈREMENT COMPLET, avec la balise </html> à la toute fin. Un site simple mais complet est INFINIMENT préférable à un site détaillé mais coupé. Si tu sens que tu manques de place, simplifie encore plus le CSS et le HTML, jamais l'inverse.
+
+Réponds UNIQUEMENT avec le code HTML complet, sans aucun texte avant ou après, sans balises markdown \`\`\`.`;
 
     const message = await anthropic.messages.create({
       model: "claude-sonnet-4-6",
-      max_tokens: 16000,
+      max_tokens: 8000,
       messages: [{ role: "user", content: prompt }],
     });
 
