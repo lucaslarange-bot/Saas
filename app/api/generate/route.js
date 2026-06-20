@@ -1,5 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 
+export const maxDuration = 60;
+
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
 });
@@ -36,7 +38,7 @@ Réponds UNIQUEMENT avec le code HTML complet, sans aucun texte avant ou après,
 
     const message = await anthropic.messages.create({
       model: "claude-sonnet-4-6",
-      max_tokens: 64000,
+      max_tokens: 6000,
       messages: [{ role: "user", content: prompt }],
     });
 
